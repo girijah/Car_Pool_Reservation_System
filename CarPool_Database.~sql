@@ -1,0 +1,352 @@
+CREATE TABLE MEMBER(
+  MemberID NUMBER(10),
+   Title VARCHAR(10),
+  FirstName VARCHAR2(20),
+  LastName VARCHAR2(20),
+   NIC_Number VARCHAR2(20),
+   Gender VARCHAR2(16),
+   Age NUMBER(3),
+  TelephoneNo VARCHAR(15),
+  MobileNo1 VARCHAR(15),
+  email_Address VARCHAR2(30),
+   UserName VARCHAR2(25),
+  Password VARCHAR2(28),
+  RegisteredDate DATE,
+  CONSTRAINT memberID_pk PRIMARY KEY (MemberID)
+  );
+
+     -- CREATE SEQUENCE BookingID START WITH 1 INCREMENT BY 1;
+
+	 CREATE SEQUENCE seq_memberID
+	MINVALUE 1
+	START WITH 1
+	INCREMENT BY 1
+	CACHE 10;
+
+  INSERT INTO MEMBER(MemberID,Title, FirstName, LastName, NIC_Number,Gender,Age, TelephoneNo,MobileNo1,email_Address,Username,Password, RegisteredDate) VALUES ('&MemberID','&UserName', '&Title', '&FirstName', '&LastName', '&NIC_Number', '&Address','&TelephoneNo','&MobileNo1', '&MobileNo2','&email_Address', '&Password');
+   INSERT INTO MEMBER(MemberID,Title, FirstName, LastName, NIC_Number,Gender,Age, TelephoneNo,MobileNo1,email_Address,Username,Password, RegisteredDate) VALUES ('', '', '', '', '', '','','', '','', '');
+    INSERT INTO MEMBER(MemberID,Title, FirstName, LastName, NIC_Number,Gender,Age, TelephoneNo,MobileNo1,email_Address,Username,Password, RegisteredDate) VALUES (seq_memberID.nextval, 'Mrs.', 'Rathythevy', 'Nagarajah', '667890608V', 'female',49,'11 2721583','77 7793984', 'rathy@gmail.com','rathy', 'rathy',TO_DATE('12-06-2006','DD-MM-YYYY') );
+	 INSERT INTO MEMBER(MemberID,Title, FirstName, LastName, NIC_Number,Gender,Age, TelephoneNo,MobileNo1,email_Address,Username,Password, RegisteredDate) VALUES (seq_memberID.nextval, 'Mr.', 'Peter', 'Parker', '702890608V', 'male',45, '11 2721583','77 0366371', 'peter@gmail.com','peter', 'peter',TO_DATE('03-01-2010','DD-MM-YYYY'));
+     INSERT INTO MEMBER(MemberID,Title, FirstName, LastName, NIC_Number,Gender,Age, TelephoneNo,MobileNo1,email_Address,Username,Password, RegisteredDate) VALUES (seq_memberID.nextval, 'Mr.', 'Janaka', 'Palihawadana', '952890608V', 'male',20,'11 2743675','77 0343422', 'janaka@gmail.com','janaka', 'janaka', TO_DATE('11-11-2012','DD-MM-YYYY'));
+       INSERT INTO MEMBER(MemberID,Title, FirstName, LastName, NIC_Number,Gender,Age, TelephoneNo,MobileNo1,email_Address,Username,Password, RegisteredDate) VALUES (seq_memberID.nextval, 'Mr.', 'Rohan', 'Perera', '69290890608V', 'male',46,'11 2741115','77 0343112', 'rohan@gmail.com','rohan', 'rohan', TO_DATE('25-07-2015','DD-MM-YYYY'));
+        INSERT INTO MEMBER(MemberID,Title, FirstName, LastName, NIC_Number,Gender,Age, TelephoneNo,MobileNo1,email_Address,Username,Password, RegisteredDate) VALUES (seq_memberID.nextval, 'Mr.', 'Mohan', 'Mendis', '892090601V', 'male',26,'11 2766675','77 0347772', 'mohan@live.com','mohan', 'mohan', TO_DATE('28-07-2015','DD-MM-YYYY'));
+
+        INSERT INTO MEMBER(MemberID,Title, FirstName, LastName, NIC_Number,Gender,Age, TelephoneNo,MobileNo1,email_Address,Username,Password, RegisteredDate,isMember) VALUES (7, 'Mr.', 'Charlie', 'Clinton', '722090671V', 'male',43,'11 2766675','77 0336362', 'charlie@live.com','charlie', 'charlie', TO_DATE('28-07-2015','DD-MM-YYYY'),'yes');
+        INSERT INTO MEMBER(MemberID,Title, FirstName, LastName, NIC_Number,Gender,Age, TelephoneNo,MobileNo1,email_Address,Username,Password, RegisteredDate,isMember) VALUES (8, 'Mrs.', 'Fernando', 'Perera', '755747671V', 'male',40,'11 2761111','77 0339876', 'fernando@gmail.com','fernando', 'fernando', TO_DATE('6-08-2015','DD-MM-YYYY'),'yes');
+        INSERT INTO MEMBER(MemberID,Title, FirstName, LastName, NIC_Number,Gender,Age, TelephoneNo,MobileNo1,email_Address,Username,Password, RegisteredDate,isMember) VALUES (9, 'Mr.', 'Harry', 'Potter', '802090671V', 'male',35,'11 2888675','77 0336362', 'harry@rocketmail.com','harry', 'harry', TO_DATE('7-08-2015','DD-MM-YYYY'),'yes');
+        INSERT INTO MEMBER(MemberID,Title, FirstName, LastName, NIC_Number,Gender,Age, TelephoneNo,MobileNo1,email_Address,Username,Password, RegisteredDate,isMember) VALUES (10, 'Mr.', 'Jehan', 'Zircon', '842090671V', 'male',31,'11 2700075','77 033232', 'jehan@live.com','jehan', 'jehan', TO_DATE('8-08-2015','DD-MM-YYYY'),'yes');
+
+         UPDATE MEMBER SET TelephoneNo = '11 2761675' WHERE  MemberID = 7;
+          SELECT NIC_Number FROM  MEMBER WHERE MemberID = 7;
+          SELECT MemberID,Title,FirstName,LastName FROM MEMBER;
+           SELECT  Title,FirstName, LastName, TelephoneNo, MobileNo1,email_Address  FROM  MEMBER INNER JOIN MEMBERBOOKING ON MEMBER.MemberID = MEMBERBOOKING.MemberID  WHERE BookingID = 2;
+
+
+  SELECT * FROM MEMBER;
+  SELECT  Title, FirstName, LastName, Gender, Age, TelephoneNo, MobileNo1, email_Address FROM MEMBER WHERE MemberID = 3;
+
+   DELETE  FROM MEMBER WHERE MemberID = '31';
+
+
+  CREATE TABLE CAR(
+    MemberID NUMBER(10),
+    CarID VARCHAR2(25),
+    Brand VARCHAR2(15),
+    CapacitySeat NUMBER(10),
+    Colour VARCHAR2(15),
+    EngineSize VARCHAR2(15),
+    AC VARCHAR2(15),
+    ManufacturedDate DATE,
+    CONSTRAINT carID_pk PRIMARY KEY (carID),
+	CONSTRAINT member_fk FOREIGN KEY (MemberID) REFERENCES MEMBER (MemberID);
+
+  DROP TABLE CAR;
+
+  alter table
+   CAR
+modify
+(
+   Brand  varchar2(30)
+);
+
+  INSERT INTO CAR(MemberID, CarID, Brand, CapacitySeat, Colour, EngineSize, AC, ManufacturedDate) VALUES(5,'KH4547', 'Audy', 4, 'Black', '3.2', 'Available', TO_DATE('12-06-2006','DD-MM-YYYY') );
+  INSERT INTO CAR(MemberID, CarID, Brand, CapacitySeat, Colour, EngineSize, AC, ManufacturedDate) VALUES(5,'W1213','Moris Oxford',4, 'Red', '4', 'Available', To_Date('24-03-2003', 'DD-MM-YYYY') );
+  INSERT INTO CAR(MemberID, CarID, Brand, CapacitySeat, Colour, EngineSize, AC, ManufacturedDate) VALUES(3,'G2732','Maruty Swift',4, 'Ash', '4', 'Available', To_Date('02-03-2007 ', 'DD-MM-YYYY ') );
+
+  SELECT * FROM CAR;
+
+    SELECT CarID FROM CAR WHERE  MemberID = 5;
+
+
+
+
+
+    CREATE TABLE ROUTE_TIME(
+      RouteTimeID NUMBER(10),
+      MemberID NUMBER(10),
+      BookedDate DATE,
+      TravellingFrom VARCHAR2(40),
+      TravellingTo VARCHAR(40),
+      TimeFrom DATE,
+      TimeTo DATE,
+      Route VARCHAR2(200),
+      CONSTRAINT RouteTimeID_pk PRIMARY KEY (RouteTimeID)
+      );
+
+	   CREATE SEQUENCE seq_RouteTimeID
+	MINVALUE 1
+	START WITH 3
+	INCREMENT BY 1
+	CACHE 10;
+
+ INSERT INTO ROUTE_TIME(RouteTimeID, MemberID, BookedDate, TravellingFrom, TravellingTo, TimeFrom, TimeTo, Route) VALUES (seq_RouteTimeID.nextval, 5,To_Date('07-07-2015', 'DD-MM-YYYY'), 'Colombo6','Colombo2', To_Date('15-07-2015 09: 00: 00 am', 'dd-mm-yyyy hh: mi: ss am'), To_Date('15-07-2015 12: 00: 00 pm', 'dd-mm-yyyy hh: mi: ss am'),'Colombo6, Colombo4, Colombo3, UNIONPLACE, Colombo2');
+
+ INSERT INTO ROUTE_TIME(RouteTimeID, MemberID, BookedDate, TravellingFrom, TravellingTo, TimeFrom, TimeTo, Route) VALUES (seq_RouteTimeID.nextval, 3,To_Date('08-07-2015', 'DD-MM-YYYY'), 'Rathmalana','Nugegoda', To_Date('12-07-2015 08: 00: 00 am','dd-mm-yyyy hh: mi: ss am'), To_Date('12-07-2015 04: 00: 00 pm', 'dd-mm-yyyy hh: mi: ss am'),'Rathmalana, MountLavinia, Dehiwala, HILLSTREET, HighLevelRoad, Nugegoda');
+
+        DROP TABLE ROUTE_TIME ;
+
+          UPDATE ROUTE_TIME
+    SET Route = ' Moratuwa , Rathmalana ,
+Galkissa,Dehiwala,
+Wellawatta, Bambalapitiya,
+Kollupitiya, Slave Island,
+Lake House, Fort, Pettah'
+    WHERE RouteTimeID = 42;
+
+
+       SELECT * FROM ROUTE_TIME ;
+       SELECT* FROM ROUTE_TIME WHERE  RouteTimeID = 38;
+
+       SELECT RouteTimeID FROM  ROUTE_TIME  WHERE  MemberID =5 AND BookedDate = To_Date(' 2015/08/09 14:20:59', 'YYYY/MM/DD HH24:MI:SS');
+
+       DELETE FROM ROUTE_TIME WHERE RouteTimeID = 1;
+       DROP SEQUENCE  seq_RouteTimeID  ;
+        SELECT  BookedDate, TravellingFrom, TravellingTo, TimeFrom, TimeTo, Route,CarID  FROM  ROUTE_TIME INNER JOIN BOOKING ON ROUTE_TIME.RouteTimeID = BOOKING.RouteTimeID WHERE BookingID = 2;
+         SELECT Route FROM ROUTE_TIME WHERE RouteTimeID IN (SELECT RouteTimeID FROM BOOKING  WHERE BookingID IN (SELECT BOOKING.bookingid FROM  BOOKING INNER JOIN ROUTE_TIME  ON ROUTE_TIME.RouteTimeID = BOOKING.RouteTimeID WHERE TimeFrom > To_Date('"+strDate+"','YYYY/MM/DD HH24:MI:SS')))
+         SELECT MemberID, RouteTimeID, BookedDate,TravellingFrom, TravellingTo, TimeFrom, TimeTo, Route,AvailableSeats FROM ROUTE_TIME WHERE Route IN (SELECT Route FROM ROUTE_TIME WHERE RouteTimeID IN (SELECT RouteTimeID FROM BOOKING  WHERE BookingID IN (SELECT BOOKING.bookingid FROM  BOOKING INNER JOIN ROUTE_TIME  ON ROUTE_TIME.RouteTimeID = BOOKING.RouteTimeID WHERE TimeFrom > To_Date('2015/08/22 11:00:00','YYYY/MM/DD HH24:MI:SS')))AND Route LIKE ('%Rathmalana%')) UNION  SELECT MemberID, RouteTimeID, BookedDate,TravellingFrom, TravellingTo, TimeFrom, TimeTo, Route,AvailableSeats FROM ROUTE_TIME WHERE Route IN (SELECT Route FROM ROUTE_TIME WHERE RouteTimeID IN (SELECT RouteTimeID FROM BOOKING  WHERE BookingID IN (SELECT BOOKING.bookingid FROM  BOOKING INNER JOIN ROUTE_TIME  ON ROUTE_TIME.RouteTimeID = BOOKING.RouteTimeID WHERE TimeFrom > To_Date('2015/08/22 11:00:00','YYYY/MM/DD HH24:MI:SS')))AND Route LIKE ('%Gallace%'));
+
+
+
+
+
+    CREATE TABLE BOOKING(
+      BookingID  NUMBER(10) NOT NULL ,
+      MemberID NUMBER(10),
+      CarID VARCHAR2(25),
+      RouteTimeID NUMBER(10),
+      CONSTRAINT BookingID_pk PRIMARY KEY (BookingID),
+	  CONSTRAINT memberID_fk FOREIGN KEY (MemberID) REFERENCES MEMBER (MemberID),
+	  CONSTRAINT carID_fk FOREIGN KEY (CarID) REFERENCES CAR (CarID),
+	  CONSTRAINT routeID_fk FOREIGN KEY (RouteTimeID) REFERENCES "ROUTE-TIME" (RouteTimeID)
+    );
+
+     CREATE SEQUENCE seq_BookingID
+	MINVALUE 1
+	START WITH 1
+	INCREMENT BY 1
+	CACHE 10;
+
+    DROP TABLE BOOKING;
+
+    INSERT INTO BOOKING(BookingID,MemberID,CarID,RouteTimeID)VALUES(seq_BookingID.nextval, 5, 'KH4547',1 );
+
+    INSERT INTO BOOKING(BookingID,MemberID,CarID,RouteTimeID)VALUES(seq_BookingID.nextval, 3, 'G2732',2 );
+    INSERT INTO BOOKING(BookingID,MemberID,CarID,RouteTimeID)VALUES(seq_BookingID.nextval, 5, 'KK4249',25);
+     INSERT INTO BOOKING(BookingID,MemberID,CarID,RouteTimeID)VALUES(seq_BookingID.nextval, 3, 'GH3313',38);
+
+
+    SELECT * FROM BOOKING;
+
+    SELECT  BookingID FROM BOOKING WHERE  MemberID = 3 AND  CarID = 'GH3313' AND  RouteTimeID = 38;
+
+
+      SELECT carID FROM BOOKING WHERE RouteTimeID = 25;
+      SELECT carID, brand, capacitySeat, colour, engineSize, AC FROM CAR WHERE carID = 'KK4249';
+     SELECT  BookingID FROM BOOKING WHERE RouteTimeID = 25;
+
+
+
+     DELETE FROM BOOKING WHERE BookingID = 1 ;
+
+    CREATE TABLE MEMBERBOOKING(
+    MemberID NUMBER(10),
+    BookingID NUMBER(10),
+    isVehicleProvider VARCHAR2(5),
+	 CONSTRAINT memID_fk FOREIGN KEY (MemberID) REFERENCES MEMBER (MemberID),
+	  CONSTRAINT book_fk FOREIGN KEY (BookingID) REFERENCES BOOKING (BookingID)
+    );
+
+  INSERT INTO MEMBERBOOKING(MemberID,BookingID,isVehicleProvider )VALUES(5, 1, 'Yes');
+  INSERT INTO MEMBERBOOKING(MemberID,BookingID,isVehicleProvider )VALUES(4,1, 'No');
+   INSERT INTO MEMBERBOOKING(MemberID,BookingID,isVehicleProvider )VALUES(3,1, 'No');
+ INSERT INTO MEMBERBOOKING(MemberID,BookingID,isVehicleProvider )VALUES(2,1, 'No');
+   INSERT INTO MEMBERBOOKING(MemberID,BookingID,isVehicleProvider )VALUES(3, 2, 'Yes');
+  INSERT INTO MEMBERBOOKING(MemberID,BookingID,isVehicleProvider )VALUES(2,2, 'No');
+   INSERT INTO MEMBERBOOKING(MemberID,BookingID,isVehicleProvider )VALUES(3, 19, 'Yes');
+
+  SELECT * FROM MEMBERBOOKING;
+  SELECT Count(*) FROM  MEMBERBOOKING WHERE BookingID =1 AND isVehicleProvider = 'No';
+   DELETE FROM MEMBERBOOKING WHERE isVehicleProvider = 'yes' AND MemberID = 9 AND BookingID = 19;
+
+   SELECT * FROM MEMBERBOOKING WHERE isVehicleProvider = 'Yes' AND MemberID = 5;
+    SELECT * FROM MEMBERBOOKING WHERE isVehicleProvider = 'No' AND MemberID = 5;
+
+
+  SELECT Description FROM ADDCOMMENTS WHERE CommentToMemberID = 5;
+
+
+  DROP TABLE MEMBERBOOKING;
+ DELETE FROM  MEMBERBOOKING WHERE  BookingID = 1;
+ SELECT * FROM MEMBERBOOKING where MemberID = 4 AND BookingID = 1;
+
+  CREATE TABLE INVOICE_LINE_ITEM(
+  ChargeID VARCHAR2(10),
+  Description VARCHAR(46),
+  Amount NUMBER(16),
+  CONSTRAINT chargeID_pk PRIMARY KEY (ChargeID)
+   );
+
+   //To_Date('12-12-2015 12: 00 am', 'DD-MM-YYYY hh: mi am')
+
+  INSERT INTO INVOICE_LINE_ITEM (ChargeID, Description, Amount) VALUES ('PER-MEM-01', 'Standard membership',30 );
+  INSERT INTO INVOICE_LINE_ITEM (ChargeID, Description, Amount) VALUES ('PER-INS-05', 'Comprehensive vehicle insurance',1000 );
+  INSERT INTO INVOICE_LINE_ITEM (ChargeID, Description, Amount ) VALUES ('PER-EXC-01', 'Excess discount on insurance',-50 );
+  INSERT INTO INVOICE_LINE_ITEM (ChargeID, Description, Amount) VALUES ('PER-NCB-40', '40% NCB discount on insurance',-400 );
+  INSERT INTO INVOICE_LINE_ITEM (ChargeID, Description, Amount) VALUES ('PER-DIS', 'Car rendered discount',-200 );
+  INSERT INTO INVOICE_LINE_ITEM (ChargeID, Description, Amount) VALUES ('PER-CHA', 'Car pooled service charge', 40 );
+
+  DROP TABLE INVOICE_LINE_ITEM;
+
+  SELECT * FROM  INVOICE_LINE_ITEM;
+
+
+  CREATE TABLE TAX_INVOICE (
+  TaxInvoiceID NUMBER(10),
+  BookingID NUMBER(10),
+  MemberID NUMBER(10),
+  ChargeID VARCHAR2(30),
+  Date_Time Date,
+  CONSTRAINT TaxInvoiceID_pk PRIMARY KEY (TaxInvoiceID),
+  CONSTRAINT mID_fk FOREIGN KEY (MemberID) REFERENCES MEMBER (MemberID),
+  CONSTRAINT bID_fk FOREIGN KEY (BookingID) REFERENCES BOOKING (BookingID),
+  CONSTRAINT chargeID_fk FOREIGN KEY (ChargeID) REFERENCES INVOICE_LINE_ITEM (ChargeID)
+  );
+
+   CREATE SEQUENCE seq_TaxInvoiceID
+	MINVALUE 1
+	START WITH 1
+	INCREMENT BY 1
+	CACHE 10;
+
+  INSERT INTO  TAX_INVOICE(TaxInvoiceID,BookingID,MemberID,ChargeID,Date_Time )VALUES(seq_TaxInvoiceID.nextval, 1, 5,'PER-DIS', To_Date('12-7-2015 09: 00 am', 'DD-MM-YYYY hh: mi am'));
+  INSERT INTO  TAX_INVOICE(TaxInvoiceID,BookingID,MemberID,ChargeID,Date_Time )VALUES(seq_TaxInvoiceID.nextval, 1, 4,'PER-CHA', To_Date('15-7-2015 09: 00 am', 'DD-MM-YYYY hh: mi am'));
+  INSERT INTO  TAX_INVOICE(TaxInvoiceID,BookingID,MemberID,ChargeID,Date_Time )VALUES(seq_TaxInvoiceID.nextval, 1, 3,'PER-CHA', To_Date('20-7-2015 09: 00 am', 'DD-MM-YYYY hh: mi am'));
+  INSERT INTO  TAX_INVOICE(TaxInvoiceID,BookingID,MemberID,ChargeID,Date_Time )VALUES(seq_TaxInvoiceID.nextval, 1, 2,'PER-CHA', To_Date('22-7-2015 09: 00 am', 'DD-MM-YYYY hh: mi am'));
+  INSERT INTO  TAX_INVOICE(TaxInvoiceID,BookingID,MemberID,ChargeID,Date_Time )VALUES(seq_TaxInvoiceID.nextval, 2, 2,'PER-CHA', To_Date('24-7-2015 09: 00 am', 'DD-MM-YYYY hh: mi am'));
+  INSERT INTO  TAX_INVOICE(TaxInvoiceID,BookingID,MemberID,ChargeID,Date_Time )VALUES(seq_TaxInvoiceID.nextval, 2, 3,'PER-DIS', To_Date('25-7-2015 09: 00 am', 'DD-MM-YYYY hh: mi am'));
+
+  INSERT INTO  TAX_INVOICE(TaxInvoiceID,BookingID,MemberID,ChargeID,Date_Time )VALUES(seq_TaxInvoiceID.nextval, 2, 3,'PER-DIS', To_Date('25-7-2015 09: 00 am', 'DD-MM-YYYY hh: mi am'));
+
+
+
+  SELECT * FROM TAX_INVOICE;
+  DELETE FROM  TAX_INVOICE WHERE  Date_Time = To_Date ('2015/08/19 18:38:42', 'YYYY/MM/DD HH24:MI:SS');
+   DELETE FROM  TAX_INVOICE WHERE BookingID = 2 AND MemberID = 3 AND TaxInvoiceID = 6;
+   DROP TABLE  TAX_INVOICE;
+
+   DROP SEQUENCE  seq_TaxInvoiceID;
+
+   SELECT * FROM  TAX_INVOICE WHERE  BookingID =1  AND MemberID =4  AND  ChargeID = 'PER-CHA';
+
+  CREATE TABLE ADDCOMMENTS(
+  commentID NUMBER(10),
+  CommentFromMemberID NUMBER(10),
+  CommentToMemberID NUMBER(10),
+  Description VARCHAR2(200),
+  CONSTRAINT commentID_pk PRIMARY KEY (commentID),
+  CONSTRAINT CommentToMemberID_fk FOREIGN KEY (CommentToMemberID) REFERENCES MEMBER (MemberID)
+  );
+
+  CREATE SEQUENCE seq_commentID
+  MINVALUE 1
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 10;
+
+  INSERT INTO ADDCOMMENTS(commentID, CommentFromMemberID, CommentToMemberID,Description) VALUES (seq_commentID.NEXTVAL, 3, 5, 'Riding with him is awesome! He is simply a gentle man with good personality. I always found easy riding with him. Prefer mohan always!');
+  INSERT INTO ADDCOMMENTS(commentID, CommentFromMemberID, CommentToMemberID,Description) VALUES (seq_commentID.NEXTVAL, 2, 3, 'This guy is rediculous');
+
+    DELETE FROM ADDCOMMENTS WHERE commentID = 4;
+
+
+   SELECT Description FROM  ADDCOMMENTS WHERE CommentToMemberID = '5';
+     SELECT Description FROM ADDCOMMENTS WHERE CommentToMemberID = '5'
+
+   SELECT * FROM   ADDCOMMENTS;
+    INSERT INTO ADDCOMMENTS(commentID, CommentFromMemberID, CommentToMemberID,Description) VALUES (seq_commentID.NEXTVAL,5,11,'Very gentle and often cares about the passengers and he is very comfortable. ');
+   DROP TABLE   ADDCOMMENTS;
+
+
+   CREATE TABLE SUGGESTION(
+   SuggestionID NUMBER (10),
+   MemberID NUMBER (10),
+   Suggestion VARCHAR (800) NOT NULL ,
+   CONSTRAINT suggest_pk PRIMARY KEY (MemberID),
+   CONSTRAINT meberID_fk FOREIGN KEY (MemberID) REFERENCES MEMBER (MemberID)
+   );
+
+    CREATE SEQUENCE seq_suggestionID
+  MINVALUE 1
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 10;
+
+  INSERT INTO SUGGESTION (SuggestionID ,MemberID, Suggestion ) VALUES (seq_suggestionID.NEXTVAL, 5, 'So far working with CPR is really fantastic with the organisation and the simplicity! I earned alot by offering car. It is efficient for me. Thanks.');
+  INSERT INTO SUGGESTION (SuggestionID ,MemberID, Suggestion ) VALUES (seq_suggestionID.NEXTVAL, 3, 'Im very happy to be a member of Car Pool Reservation. Daily work seems easy now! Enjoying!');
+
+    SELECT * FROM SUGGESTION;
+
+   CREATE TABLE PAYMENT(
+    PaymentID NUMBER(10),
+    TaxInvoiceID NUMBER(10),
+	CashReceived NUMBER(16),
+	CashPayment NUMBER(16),
+    CashBalance NUMBER(16),
+    CreditCardPayment NUMBER(16),
+    CreditCardNumber NUMBER(16),
+	PaidDate Date,
+	ReceivedAdminID NUMBER(10),
+	IsFullyPaid varchar2 (10),
+    CONSTRAINT PaymentID_pk PRIMARY KEY (PaymentID),
+	CONSTRAINT Tax_fk FOREIGN KEY (TaxInvoiceID) REFERENCES TAX_INVOICE(TaxInvoiceID),
+	CONSTRAINT adm_fk FOREIGN KEY (ReceivedAdminID) REFERENCES MEMBER(MemberID)
+   );
+
+    CREATE SEQUENCE seq_PaymentID
+	MINVALUE 1
+	START WITH 1
+	INCREMENT BY 1
+	CACHE 10;
+
+   INSERT INTO PAYMENT(PaymentID, TaxInvoiceID,CashReceived, CashPayment, CashBalance, CreditCardPayment, CreditCardNumber,  PaidDate,ReceivedAdminID, IsFullyPaid )VALUES(seq_PaymentID.nextval, 4, 50, 40, 10,0,0, To_Date('4-8-2015 10: 00 am', 'DD-MM-YYYY hh: mi am'),11 , 'yes');
+   INSERT INTO PAYMENT(PaymentID, TaxInvoiceID,CashReceived, CashPayment, CashBalance, CreditCardPayment, CreditCardNumber,  PaidDate,ReceivedAdminID, IsFullyPaid )VALUES(seq_PaymentID.nextval, 1, 0, -200, 0,0,0, To_Date('4-8-2015 10: 00 am', 'DD-MM-YYYY hh: mi am'),14 , 'yes');
+   INSERT INTO PAYMENT(PaymentID, TaxInvoiceID,CashReceived, CashPayment, CashBalance, CreditCardPayment, CreditCardNumber,  PaidDate,ReceivedAdminID, IsFullyPaid )VALUES(seq_PaymentID.nextval, 2, 40, 40, 0,0,0, To_Date('4-8-2015 10: 00 am', 'DD-MM-YYYY hh: mi am'),13 , 'yes');
+   INSERT INTO PAYMENT(PaymentID, TaxInvoiceID,CashReceived, CashPayment, CashBalance, CreditCardPayment, CreditCardNumber,  PaidDate,ReceivedAdminID, IsFullyPaid )VALUES(seq_PaymentID.nextval, 3, 40, 40, 0,0,0, To_Date('4-8-2015 10: 00 am', 'DD-MM-YYYY hh: mi am'),12 , 'yes');
+   INSERT INTO PAYMENT(PaymentID, TaxInvoiceID,CashReceived, CashPayment, CashBalance, CreditCardPayment, CreditCardNumber,  PaidDate,ReceivedAdminID, IsFullyPaid )VALUES(seq_PaymentID.nextval, 6, 0, -200, 0,0,0, To_Date('4-8-2015 10: 00 am', 'DD-MM-YYYY hh: mi am'),12 , 'yes');
+    INSERT INTO PAYMENT(PaymentID, TaxInvoiceID,CashReceived, CashPayment, CashBalance, CreditCardPayment, CreditCardNumber,  PaidDate,ReceivedAdminID, IsFullyPaid)VALUES(seq_PaymentID.nextval, 5, 100, 40, 60,0,0, To_Date('4-8-2015 10: 00 am', 'DD-MM-YYYY hh: mi am'),11 , 'yes');
+
+
+     -- DROP SEQUENCE seq_PaymentID ;
+
+
+    SELECT * FROM PAYMENT;
+
+    DROP TABLE PAYMENT;
+
+
+     SELECT MemberID, RouteTimeID, BookedDate,TravellingFrom, TravellingTo, TimeFrom, TimeTo, Route,AvailableSeats FROM ROUTE_TIME WHERE RouteTimeID IN (SELECT RouteTimeID FROM BOOKING  WHERE BookingID IN (SELECT BOOKING.bookingid FROM  BOOKING INNER JOIN ROUTE_TIME  ON ROUTE_TIME.RouteTimeID = BOOKING.RouteTimeID WHERE TimeFrom > To_Date('2015/08/22 11:00:00','YYYY/MM/DD HH24:MI:SS')));
+
+       SELECT Route FROM ROUTE_TIME WHERE RouteTimeID IN (SELECT RouteTimeID FROM BOOKING  WHERE BookingID IN (SELECT BOOKING.bookingid FROM  BOOKING INNER JOIN ROUTE_TIME  ON ROUTE_TIME.RouteTimeID = BOOKING.RouteTimeID WHERE TimeFrom > To_Date('2015/08/22 11:00:00','YYYY/MM/DD HH24:MI:SS')));
+
+
+      SELECT MemberID FROM MEMBERBOOKING WHERE  isVehicleProvider = 'No' AND BookingID = 1;
